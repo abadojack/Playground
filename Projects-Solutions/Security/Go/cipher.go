@@ -73,9 +73,10 @@ func encode(str string, key int) string {
 /*displays all the possible decodings of the string */
 func bruteforce(str string) {
 	for key := 0; key < 26; key++ {
-		fmt.Println("Key >> ", key, " : ", decode(str, key))
+		fmt.Println("Key -> ", key, " : ", decode(str, key))
 	}
 }
+
 func main() {
 	var choice, key int
 	input := bufio.NewScanner(os.Stdin)
