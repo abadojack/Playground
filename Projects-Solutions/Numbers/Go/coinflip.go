@@ -1,9 +1,3 @@
-/*Coin Flip Simulation** -
-* Write some code that simulates flipping a single coin however many times
-* the user decides. The code should record the outcomes and
-* count the number of tails and heads.
-* */
-
 package main
 
 import (
@@ -12,7 +6,11 @@ import (
 	"time"
 )
 
-/*flip: returns random number between 1 and 2*/
+//Coin Flip Simulation:
+//Write some code that simulates flipping a single coin however many times
+//the user decides. The code should record the outcomes and count the number of tails and heads.
+
+//Returns random number between 1 and 2
 func flip() int {
 	return 1 + rand.Int()%2
 }
@@ -22,7 +20,6 @@ func main() {
 	heads := 0
 	tails := 0
 
-	/*seed the random generator with the current time */
 	rand.Seed(time.Now().Unix())
 
 	fmt.Print("Enter number of times to flip coin: ")

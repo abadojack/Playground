@@ -1,9 +1,3 @@
-/*
-*=====Change Return Program=======
-*The user enters a cost and then the amount of money given.
-*The program will figure out the change and the number of quarters, dimes, nickels,
-*pennies needed for the change.
- */
 package main
 
 import (
@@ -12,8 +6,11 @@ import (
 	"os"
 )
 
-/* finds the number of bills or coins to return
- * e.g. how many bills of $100 should be returned ?*/
+//=====Change Return Program=======
+//The user enters a cost and then the amount of money given.
+//The program will figure out the change and the number of quarters, dimes, nickels, pennies needed for the change.
+
+//Finds the number of bills or coins to return e.g. how many bills of $100 should be returned ?
 func balance(change, value float64) float64 {
 	count := float64(0)
 
@@ -24,7 +21,7 @@ func balance(change, value float64) float64 {
 	return count
 }
 
-/* display output to the screen*/
+//Display output to the screen
 func display(number float64, s string) {
 	if number > 0 {
 		fmt.Printf("Number of %s is %.f\n", s, number)
@@ -74,7 +71,7 @@ func main() {
 	display(balance(change, 1), "one bill(s)")
 	change -= balance(change, 1) * 1
 
-	/* if there's still more change left, return coins*/
+	//If there's still more change left, return coins
 	if change > 0 {
 		change *= 100
 

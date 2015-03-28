@@ -1,13 +1,13 @@
-/*Binary to Decimal and Back Converter :
-* Develop a converter to convert a decimal
-* number to binary or a binary number to its decimal equivalent.
- */
-
 package main
 
 import "fmt"
+import "os"
+import "strconv"
 
-/*Integer power: compute a**b using binary powering algorithm */
+//Binary to Decimal and Back Converter :
+//Develop a converter to convert a decimal number to binary or a binary number to its decimal equivalent.
+
+//Compute a**b using binary powering algorithm
 func Pow(a, b int) int {
 	p := 1
 	for b > 0 {
@@ -20,7 +20,7 @@ func Pow(a, b int) int {
 	return p
 }
 
-/*isBinary : returns true if it's argument is a binary digit else false otherwise*/
+//Return true if the argument is a binary digit else false otherwise
 func isBinary(n int) bool {
 	for n > 0 {
 		digit := n % 10
@@ -34,65 +34,68 @@ func isBinary(n int) bool {
 	return true
 }
 
-/* converts decimal to binary*/
+//Convert decimal number to its binary equivalent
 func dec2bin(n int) int {
-	var rem, i, bin int
-	bin = 0
-	i = 1
-
+	bin := 0
+	i := 1
 	for n != 0 {
-		rem = n % 2
+		bin += i * (n % 2)
 		n /= 2
-		bin += rem * i
 		i *= 10
 	}
 	return bin
 }
 
-/* converts binary to decimal*/
+//convert binary number to its decimal equivalent
 func bin2dec(n int) int {
-	var rem, dec, i int
-	dec = 0
-	i = 0
-
+	i, dec := 0, 0
 	for n != 0 {
-		rem = n % 10
+		rem := n % 10
+		dec += (Pow(2, i) * rem)
 		n /= 10
-		dec += rem * Pow(2, i)
 		i++
 	}
 	return dec
 }
 
+func usage() {
+	fmt.Println("usage: ")
+	fmt.Println(os.Args[0], " -option <integer>\n")
+	fmt.Println("options : -b to convert  to binary or -d to convert to decimal\n")
+	fmt.Println(os.Args[0], " -b 2\n")
+	fmt.Println(os.Args[0], "-d 1010\n")
+	os.Exit(0)
+}
+
 func main() {
-	var num, choice int
-	fmt.Print("1.decimal to binary\n2.binary to decimal\n\nEnter choice: ")
-	fmt.Scanf("%d", &choice)
+	var num int
 
-	switch choice {
-	case 1:
-		fmt.Println("Enter decimal number")
-		fmt.Scanf("%d", &num)
-		bin := dec2bin(num)
+	if len(os.Args) < 3 {
+		usage()
+		os.Exit(1)
+	}
 
-		fmt.Printf("%d to binary is %d\n", num, bin)
+	num, err := strconv.Atoi(os.Args[2])
 
-		break
+	if err != nil {
+		panic(err)
+	}
 
-	case 2:
-		fmt.Println("Enter binary number")
-		fmt.Scanf("%d", &num)
+	switch os.Args[1] {
+	case "-d":
 
 		if isBinary(num) {
-			bin := bin2dec(num)
-			fmt.Printf("%d to binary is %d\n", num, bin)
+			fmt.Println(bin2dec(num))
 		} else {
-			fmt.Println(num, " is not a binary number")
+			usage()
 		}
+		break
 
+	case "-b":
+		fmt.Println(dec2bin(num))
 		break
 
 	default:
-		fmt.Println("Invalid choice")
+		usage()
 	}
 }

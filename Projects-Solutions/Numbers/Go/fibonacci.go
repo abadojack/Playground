@@ -1,11 +1,9 @@
-/*
-* Fibonacci Sequence
-* Enter a number and have the program generate the Fibonacci sequence
-* to that number or to the Nth number
- */
 package main
 
 import "fmt"
+
+//Fibonacci Sequence : Enter a number and have the program generate the Fibonacci sequence
+//to that number or to the Nth number
 
 func main() {
 	var num uint64
@@ -16,17 +14,23 @@ func main() {
 		panic(err)
 	}
 
-	for i := 0; i <= int(num); i++ {
-		fmt.Printf("%d ", fibonacci(uint64(i)))
+	f := fib()
+
+	for num > 0 {
+		fmt.Print(f(), " ")
+		num--
 	}
 
 	fmt.Println()
 }
 
-func fibonacci(num uint64) uint64 {
-	if num == 0 || num == 1 {
-		return num
-	} else {
-		return fibonacci(num-1) + fibonacci(num-2)
+// fib returns a function that returns
+// successive Fibonacci numbers.
+func fib() func() int {
+	a, b := 0, 1
+
+	return func() int {
+		a, b = b, a+b
+		return a
 	}
 }

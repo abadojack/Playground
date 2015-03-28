@@ -1,12 +1,9 @@
-/*
-* Find Cost of Tile to Cover W x H Floor:
-* Calculates the total cost of tile it would take to cover a floor plan
-* of width and height, using a cost entered by the user.
- */
-
 package main
 
 import "fmt"
+
+//Find Cost of Tile to Cover W x H Floor: Calculates the total cost of tile it would take to cover a floor plan
+//of width and height, using a cost entered by the user.
 
 func main() {
 	var length, width, size, cost, total_cost float64

@@ -5,9 +5,7 @@ package main
 
 import "fmt"
 
-/*pow: compute a**b using binary powering algorithm */
-//TODO
-//add comments on how this algorithm works
+//Compute a**b using binary powering algorithm
 func pow(a, b int) int {
 	p := 1
 	for b > 0 {

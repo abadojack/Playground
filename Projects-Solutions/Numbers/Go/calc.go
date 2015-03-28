@@ -1,8 +1,3 @@
-/*Calculator:
-* A simple calculator to do basic operators. Make it a scientific
-* calculator for added complexity.
-* */
-
 package main
 
 import (
@@ -10,12 +5,14 @@ import (
 	"math"
 )
 
+//Calculator : A simple calculator to do basic operators. Make it a scientific calculator for added complexity.
+
 //performs basic arithmetic ... addition, subtraction, division and multiplication
 func arithmetic() float64 {
 	var num1, num2, ans float64
 	operator := '+'
 	fmt.Println("Enter input as num1(operator)num2 e.g. 6+7: ")
-	fmt.Scanf("%f %c %f", &num1, &operator, &num2)
+	fmt.Scanf("%f%c%f", &num1, &operator, &num2)
 
 	switch operator {
 	case '+':
@@ -33,8 +30,9 @@ func arithmetic() float64 {
 	case '/':
 		ans = num1 / num2
 		break
+
 	default:
-		fmt.Println("Invalid output")
+		fmt.Println("Invalid input")
 		break
 	}
 

@@ -11,7 +11,7 @@ import (
 	"math"
 )
 
-/* isPrime: returns true if it's argument is prime or false otherwise*/
+//Returns true if it's argument is prime or false otherwise
 func isPrime(num int) bool {
 	sqrt_num := math.Sqrt(float64(num))
 	for i := 2; i <= int(sqrt_num); i++ {
