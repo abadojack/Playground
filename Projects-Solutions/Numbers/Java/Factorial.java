@@ -33,10 +33,10 @@ public class Factorial {
 			fact = fact.multiply(BigInteger.valueOf(i));
 		}
 		
-		System.out.println("\nUsing a loop, the factorial is: ");
+		System.out.println("\nUsing a loop, the factorial is: "); //find factorial using a loop 
 		System.out.println(fact);
 		
-		System.out.println("\nBy recursion, the factorial is: ");
+		System.out.println("\nBy recursion, the factorial is: "); //find factorial using a recursive function
 		System.out.println(factorial(num));
 	}
 }
